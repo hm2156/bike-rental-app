@@ -1,0 +1,15 @@
+/* src/components/Header.module.css */
+.header {
+    background-color:#004494;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    
+}
+
+.title {
+    color: white;
+    font-weight: 300;
+    text-align: left;
+    padding-left: 25px;
+}

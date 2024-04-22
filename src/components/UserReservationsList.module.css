@@ -1,0 +1,51 @@
+/* UserReservationsList.module.css */
+
+.userReservationsContainer {
+    max-width: 400px; /* Match the width of the bike cards or set according to your layout needs */
+    margin-top: 90px;
+    padding: 20px;
+    background: #ffffff; /* White background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.userReservationsHeader {
+    font-size: 1.5rem; /* Larger text size for headers */
+    color: #333; /* Dark grey color for the text */
+    margin-bottom: 20px; /* Margin below the header for spacing */
+}
+
+.userReservationList {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.userReservationItem {
+    border-bottom: 1px solid #eaeaea; /* Light grey border for separation */
+    padding: 10px 0; /* Padding top and bottom for spacing between items */
+}
+
+.reservationDetail {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+    gap: 10px; /* Space between image and text */
+}
+
+.reservationDetail img {
+    width: 100px; /* Set a fixed width for images */
+    border-radius: 4px; /* Rounded corners for images */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+}
+
+.reservationInfo {
+    flex-grow: 1; /* Allow the text to take up available space */
+}
+
+/* Apply a media query if you need to adjust for smaller screens */
+@media (max-width: 768px) {
+    .userReservationsContainer {
+        max-width: 100%; /* Full width on small screens */
+        margin: 20px 10px; /* Smaller side margins on small screens */
+    }
+}

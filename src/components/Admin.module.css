@@ -1,0 +1,172 @@
+.header {
+    background-color:#004494;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    
+}
+
+.title {
+    color: white;
+    font-weight: 300;
+    text-align: left;
+    padding-left: 25px;
+}
+
+.logoutButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.col {
+  display: flex;
+  flex-direction: row; /* Aligns items vertically */
+  margin: 30px;
+  padding: 30px;
+
+
+}
+
+.bikeContainer {
+    display: flex;
+    flex-direction: column; /* Aligns items vertically */
+    width: 25%; /* Adjusts the container width to a third of the parent */
+    margin: 20px;
+    padding: 10px;
+}
+
+.bikeCard {
+    flex: 0 0 5%; /* Do not grow, do not shrink, start with 30% width */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    align-content: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.bikeImage {
+    width: 100%; /* Adjusts image width to fit the card */
+    max-width: 150px; /* Limits the maximum width to prevent overly large images */
+    height: auto; /* Keeps the aspect ratio intact */
+    display: block; /* Ensures the image doesn't inline */
+    margin: 0 auto 0px; 
+}
+
+.editButton, .deleteButton {
+    padding: 8px 16px;
+    margin-top: 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.editButton {
+    padding: 5px 15px; /* Padding inside the buttons */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-weight: bold; /* Bold font for button text */
+    background-color: #f0ad4e; /* Bootstrap's btn-warning color */
+    color: white; /* White text */
+}
+
+.deleteButton {
+    padding: 5px 15px; /* Padding inside the buttons */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-weight: bold; /* Bold font for button text */
+    background-color: #d9534f; /* Bootstrap's btn-danger color */
+    color: white; /* White text */
+}
+
+.buttonContainer {
+    text-align: center;
+}
+
+/* Adjusting responsiveness */
+@media (max-width: 768px) {
+    .bikeCard {
+        flex: 0 0 100%; /* On smaller screens, each card takes full width */
+    }
+}
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: nowrap; /* Prevents wrapping of flex items */
+    width: 100%; /* Takes the full width available */
+  }
+  
+
+.addButton {
+    padding: 5px 10px;
+    background-color: #004494; /* Green */
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.userListContainer {
+    width: 93%; /* Full width */
+    margin-left: 20px;
+    background-color: #fff; /* White background */
+    padding: 20px; /* Padding around the content */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 10px; /* Space below the container */
+  }
+  
+  .userListContainer h2 {
+    margin-bottom: 10px; /* Space below the heading */
+    color: #333; /* Dark text for the heading */
+  }
+  
+  .userListContainer ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .userListContainer li {
+    padding: 10px; /* Padding inside each list item */
+    border-bottom: 1px solid #eee; /* Separator between items */
+    display: flex; /* Enable flex layout */
+    justify-content: space-between; /* Space between content and buttons */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .userListContainer .buttonContainer {
+    display: flex; /* Enable flex layout for buttons */
+    gap: 10px; /* Space between buttons */
+  }
+  
+  .userListContainer .editButton,
+  .userListContainer .deleteButton {
+    padding: 5px 15px; /* Padding inside the buttons */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-weight: bold; /* Bold font for button text */
+  }
+  
+  .userListContainer .editButton {
+    background-color: #f0ad4e; /* Bootstrap's btn-warning color */
+    color: white; /* White text */
+  }
+  
+  .userListContainer .deleteButton {
+    background-color: #d9534f; /* Bootstrap's btn-danger color */
+    color: white; /* White text */
+  }
+  

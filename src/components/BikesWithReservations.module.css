@@ -1,0 +1,64 @@
+.userReservationsContainer {
+    max-width: 400px; /* Match the width of the bike cards or set according to your layout needs */
+    margin-top: 380px;
+    margin-left: 40px;
+    padding: 30px;
+    background: #ffffff; /* White background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+.title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.bikeCard {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.bikeTitle {
+    margin: 0;
+    color: #004494;
+    font-size: 1.5rem;
+}
+
+.bikeImage {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+.reservationsTitle {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.reservationDetails {
+    margin-left: 20px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Additional media query for responsiveness */
+@media (max-width: 600px) {
+    .container {
+        padding: 100px;
+        margin-top: 190px;
+    }
+
+    .bikeTitle {
+        font-size: 1.2rem;
+    }
+
+    .reservationsTitle {
+        font-size: 1rem;
+    }
+}
