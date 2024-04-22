@@ -36,7 +36,7 @@ Before running the backend server for the first time, you must set up your Mongo
 
    ```bash
    cd backend
-   ``
+
 Run the seed script to populate your MongoDB database with initial bike data. This step is crucial as it sets up the necessary data structures and populates them with default values, ensuring that the application functions correctly from the start.
 ```bash
 node seed.js
