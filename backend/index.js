@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const fs = require('fs');
 
 const bodyParser = require('body-parser');
 const app = express();
@@ -22,10 +23,14 @@ app.use(session({
   cookie: { secure: false } 
 }));
 
+
 mongoose.connect('mongodb://localhost:27017/bike-rental')
-.then(() => console.log('MongoDB connected'))
+.then(() => {
+    console.log('MongoDB connected'); })
 .catch(err => console.log('Failed to connect to MongoDB', err));
 
+
+  
   const { Schema, model } = mongoose;
 
   const bikeSchema = new Schema({
@@ -56,6 +61,28 @@ mongoose.connect('mongodb://localhost:27017/bike-rental')
   const Bike = model('Bike', bikeSchema);
   const Reservation = model('Reservation', reservationSchema);
   const User = model('User', userSchema);
+
+
+//   const seedBikes = async () => {
+//     try {
+//         // Check if there are any bikes in the database
+//         const count = await Bike.countDocuments();
+//         if (count === 0) {
+//             console.log("No bikes found in the database. Seeding bikes...");
+
+//             // Load bike data from the JSON file
+//             const bikeData = require('./data/bike-rental.bikes.json');
+
+//             // Insert the bike data into the database
+//             await Bike.insertMany(bikeData);
+//             console.log('Data successfully seeded!');
+//         } else {
+//             console.log("Bikes are already present in the database.");
+//         }
+//     } catch (error) {
+//         console.error('Error seeding data:', error);
+//     }
+// };
 
   //////////////////////////////////////////////////////////////////////////////
 

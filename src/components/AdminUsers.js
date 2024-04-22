@@ -63,7 +63,7 @@ const AdminUsers = () => {
     };
 
     const handleAddClick = () => {
-        setClickAdd(!clickAdd); // Toggle the visibility of the add form
+        setClickAdd(!clickAdd); 
     };
 
     if (isLoading) return <div>Loading...</div>;

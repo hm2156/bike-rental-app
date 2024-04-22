@@ -31,7 +31,7 @@ const BikeEditForm = ({ bike, onUpdate }) => {
         availability: availability.split(', ').map(date => date.trim()),
       });
 
-      onUpdate(response.data); // Trigger an update in the parent component
+      onUpdate(response.data);
       console.log('Before update:', reservationTrigger);
        triggerReservationUpdate();
        console.log('After update:', reservationTrigger);

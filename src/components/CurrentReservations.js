@@ -38,8 +38,7 @@ const CurrentReservations = () => {
         axios.post(`http://localhost:3001/cancel`, { reservationId , username: user.username})
             .then(response => {
                 alert('Reservation cancelled successfully!');
-                // Refresh the reservations list to reflect the change
-                // reservationTrigger()
+      
                 setReservations(prevReservations => 
                     prevReservations.filter(reservation => reservation._id !== reservationId)
                 );
@@ -70,7 +69,7 @@ const CurrentReservations = () => {
             username: user.username
           });
           alert(`Rating submitted! New Average Rating: ${response.data.averageRating}`);
-          // Optional: Trigger a state update to reflect the new average rating
+
         } catch (error) {
           console.error('Error submitting rating:', error);
           alert('Failed to submit rating. Please try again later.');

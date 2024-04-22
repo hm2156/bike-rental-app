@@ -1,10 +1,10 @@
 .userReservationsContainer {
-    max-width: 200px; /* Match the width of the bike cards or set according to your layout needs */
+    max-width: 200px;
     margin-top: 380px;
     padding: 30px;
-    background: #ffffff; /* White background color */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background: #ffffff; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 .title {
     text-align: left;
@@ -46,7 +46,6 @@
     color: #555;
 }
 
-/* Additional media query for responsiveness */
 @media (max-width: 600px) {
     .container {
         padding: 100px;

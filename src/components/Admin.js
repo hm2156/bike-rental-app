@@ -13,11 +13,8 @@ const Admin = () => {
 
     const navigate = useNavigate();
     
-
-
     const handleLogout = () => {
-        // Perform logout operations here if any (like clearing localStorage)
-        navigate('/'); // Redirect to login page
+        navigate('/'); 
       };
     
   

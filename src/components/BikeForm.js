@@ -17,7 +17,7 @@ const BikeForm = ({ addBikeCallback }) => {
       e.preventDefault();
       try {
         const response = await axios.post('http://localhost:3001/bikes', formData);
-        addBikeCallback(response.data.bike); // Update the bike list in parent component
+        addBikeCallback(response.data.bike); 
       } catch (error) {
         console.error('Failed to add bike:', error);
       }

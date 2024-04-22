@@ -1,0 +1,140 @@
+[
+  {
+    "model": "Electric Bike",
+    "color": "Green",
+    "location": "Riyadh",
+    "ratings": [],
+    "averageRating": 0,
+    "available": false,
+    "imageUrl": "https://www.fujibikes.com/cdn/shop/products/2022_FUJI_ADVENTURE_275_COMP_MATTE_IRONGRAY_FRONT.png?v=1668436521&width=580",
+    "availability": [
+      "2024-05-09",
+      "2024-05-19",
+      "2024-06-20",
+      "2024-05-07"
+    ],
+    "timeSlots": [
+      "09:00-11:00",
+      "11:00-13:00",
+      "13:00-15:00",
+      "15:00-17:00",
+      "17:00-19:00"
+    ]
+  },
+  {
+    "model": "Hybrid Bike",
+    "color": "Yellow",
+    "location": "Tokyo",
+    "ratings": [
+      {
+        "user": "662484b2589062ee736ddb70",
+        "rating": 2
+      }
+    ],
+    "averageRating": 2,
+    "available": true,
+    "imageUrl": "https://www.fujibikes.com/cdn/shop/products/2022_FUJI_ADVENTURE_275_COMP_MATTE_IRONGRAY_FRONT.png?v=1668436521&width=580",
+    "availability": [
+      "2024-06-09",
+      "2024-05-19",
+      "2024-06-20",
+      "2024-05-17"
+    ],
+    "timeSlots": [
+      "09:00-11:00",
+      "11:00-13:00",
+      "13:00-15:00",
+      "15:00-17:00",
+      "17:00-19:00"
+    ]
+  },
+  {
+    "model": "Mountain Bike",
+    "color": "Red",
+    "location": "Berlin",
+    "ratings": [
+      {
+        "user": "662484b2589062ee736ddb70",
+        "rating": 5
+      }
+    ],
+    "averageRating": 5,
+    "available": true,
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_6e308a6a-7372-4eb4-a8d8-fb78c0872807?wid=488&hei=488&fmt=pjpeg",
+    "availability": [
+      "2024-04-18",
+      "2024-04-19",
+      "2024-04-20",
+      "2024-05-09"
+    ],
+    "timeSlots": [
+      "09:00-11:00",
+      "11:00-13:00",
+      "13:00-15:00",
+      "15:00-17:00",
+      "17:00-19:00"
+    ]
+  },
+  {
+    "model": "Road Bike",
+    "color": "Black",
+    "location": "Paris",
+    "ratings": [
+      {
+        "user": "662484b2589062ee736ddb70",
+        "rating": 3
+      }
+    ],
+    "averageRating": 3,
+    "available": true,
+    "imageUrl": "https://guardianbikes.com/cdn/shop/files/GBE-20-1-BB-00_1024x1024.jpg?v=1701302234",
+    "availability": [
+      "2024-05-09",
+      "2024-05-19",
+      "2024-06-20",
+      "2024-05-07"
+    ],
+    "timeSlots": [
+      "09:00-11:00",
+      "11:00-13:00",
+      "13:00-15:00",
+      "15:00-17:00",
+      "17:00-19:00"
+    ]
+  },
+  {
+    "model": "Citi Bikes",
+    "color": "Blue",
+    "location": "Nyc",
+    "ratings": [
+      {
+        "user": "6624758cb39beffd13981ae6",
+        "rating": 3
+      },
+      {
+        "user": "662484b2589062ee736ddb70",
+        "rating": 5
+      },
+      {
+        "user": "6625aed47dc7e3fcb83a4241",
+        "rating": 5
+      }
+    ],
+    "averageRating": 4.333333333333333,
+    "available": true,
+    "imageUrl": "https://guardianbikes.com/cdn/shop/files/GBE-20-1-BB-00_1024x1024.jpg?v=1701302234",
+    "availability": [
+      "2024-04-09",
+      "2024-04-19",
+      "2024-04-20",
+      "2024-04-27"
+    ],
+    "timeSlots": [
+      "09:00-11:00",
+      "11:00-13:00",
+      "13:00-15:00",
+      "15:00-17:00",
+      "17:00-19:00"
+    ]
+  }
+]

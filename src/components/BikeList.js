@@ -10,6 +10,7 @@ import CurrentReservations from './CurrentReservations';
 
 
 
+
 const BikeList = () => {
   const [modelFilter, setModelFilter] = useState('');
   const [colorFilter, setColorFilter] = useState('');
@@ -18,10 +19,10 @@ const BikeList = () => {
   const [bikes, setBikes] = useState([]);
   // const[filteredBikes, setFilteredBikes]=useState([]);
   const navigate = useNavigate();
-  const { user } = useUser();
+  const { user, points } = useUser();
   const [selectedDate, setSelectedDate] = useState(() => {
     const today = new Date();
-    return today.toISOString().split('T')[0];  // Format to YYYY-MM-DD
+    return today.toISOString().split('T')[0];  
   });
 
   useEffect(() => {
@@ -57,13 +58,13 @@ const BikeList = () => {
 const filteredBikes = useMemo(() => {
   console.log("bikes before filtering", bikes)
   const filtered_bikes = bikes.filter(bike => {
-    let meetsRatingCriteria = true; // Assume all bikes meet the criteria initially
+    let meetsRatingCriteria = true; 
 
     if (ratingFilter === "Unrated") {
-      meetsRatingCriteria = bike.ratings.length === 0; // Checks if there are no ratings
+      meetsRatingCriteria = bike.ratings.length === 0; 
     } else if (parseInt(ratingFilter)) {
-      const bikeRating = Math.round(bike.averageRating); // Round the average rating to the nearest whole number
-      meetsRatingCriteria = parseInt(ratingFilter) === bikeRating; // Check if the filtered rating matches the bike's rounded rating
+      const bikeRating = Math.round(bike.averageRating); 
+      meetsRatingCriteria = parseInt(ratingFilter) === bikeRating; 
     }
     return (modelFilter ? bike.model === modelFilter : true) &&
       (colorFilter ? bike.color === colorFilter : true) &&
@@ -86,20 +87,21 @@ const filteredBikes = useMemo(() => {
   
   const handleLogout = async () => {
     try {
-        // Send a request to the backend to log out
+
         await axios.post('http://localhost:3001/logout');
         
         
-        localStorage.clear();  // or sessionStorage.clear();
+        localStorage.clear(); 
         
         navigate('/');
     } catch (error) {
         console.error('Logout failed:', error);
-        // Handle errors, e.g., show an error message to the user
+      
     }
 };
 
   return (
+
     <div>
       <Header />
       <div className={styles.filterContainer}>

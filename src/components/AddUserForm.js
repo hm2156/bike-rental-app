@@ -7,7 +7,7 @@ const AddUserForm = () => {
     const [userData, setUserData] = useState({
         username: '',
         password: '',
-        role: 'user'  // Default role
+        role: 'user'  
     });
     const { triggerReservationUpdate , reservationTrigger} = useUser();
     const [showForm, setShowForm] = useState(true);

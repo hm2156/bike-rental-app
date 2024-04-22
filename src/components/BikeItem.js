@@ -16,25 +16,7 @@ const BikeItem = ({ bike, selectedDate, onReserve }) => {
   const { user, triggerReservationUpdate } = useUser(); 
   const [lastUpdated, setLastUpdated] = useState(Date.now());
 
-  // const handleRate = async () => {
-  //   if (!user) {
-  //     alert('You must be logged in to rate a bike.');
-  //     return;
-  //   }
-  //   if (hasRated) {
-  //     alert('You have already rated this bike.');
-  //     return;
-  //   }
-  //   try {
-  //     const response = await axios.post('http://localhost:3001/rate', { bikeId: bike._id, rating });
-  //     alert(`Rating submitted! Average Rating: ${response.data.averageRating}`);
-  //     onReserve(bike._id, response.data.averageRating); // Update UI with new average rating
-  //     setHasRated(true); // Set hasRated to true after successful rating
-  //   } catch (error) {
-  //     console.error('Error submitting rating:', error);
-  //     alert('Failed to submit rating. Please try again later.');
-  //   }
-  // };
+
 
   useEffect(() => {
     if (selectedDate && bike._id) {
@@ -48,13 +30,6 @@ const BikeItem = ({ bike, selectedDate, onReserve }) => {
 }, [selectedDate, bike._id, lastUpdated]);
 
 
-  // const handleReserveClick = () => {
-  //   if (!selectedDate) {
-  //     alert('Please select a date first.');
-  //     return;
-  //   }
-  //   setShowTimeSlots(true);
-  // };
 
   const handleReserve = async () => {
     if (!selectedTimeSlot) {
@@ -74,8 +49,8 @@ const BikeItem = ({ bike, selectedDate, onReserve }) => {
             username: user.username
         });
         alert(response.data.message);
-        onReserve(bike._id, true); // Update the parent component about the reservation status
-        setShowTimeSlots(false); // Hide time slot selector after reservation
+        onReserve(bike._id, true); 
+        setShowTimeSlots(false); 
         triggerReservationUpdate()
         setLastUpdated(Date.now());
     } catch (error) {
@@ -92,12 +67,12 @@ const BikeItem = ({ bike, selectedDate, onReserve }) => {
 
     try {
       const response = await axios.post('http://localhost:3001/cancel', {
-        bikeId: bike._id, // Use bike._id to refer to the ID of the bike
+        bikeId: bike._id,
         date: selectedDate,
         timeSlot: selectedTimeSlot
       });
       alert(response.data.message);
-      onReserve(bike._id, false); // Update UI to show bike as not reserved
+      onReserve(bike._id, false); 
     } catch (error) {
       console.error('Error cancelling the reservation:', error);
       alert('Failed to cancel the reservation. Please try again later.');

@@ -63,3 +63,16 @@
     flex-wrap: wrap;
     gap: 10px; /* space between bikes */
   }
+
+  .pointsStyle {
+    padding: 10px;
+    margin:10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  };
