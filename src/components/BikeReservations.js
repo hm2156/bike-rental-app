@@ -17,7 +17,7 @@ const BikeReservations = () => {
 
     return (
         <div>
-            <h2>All Bikes and Their Reservations</h2>
+            <h2>Reservations Per Bike</h2>
             {Object.entries(bikeReservations).map(([bikeId, reservations], index) => (
                 <div key={index}>
                     <h3>Bike ID: {bikeId}</h3>

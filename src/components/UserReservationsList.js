@@ -25,7 +25,7 @@ const UserReservationsList = () => {
 
     return (
         <div className={styles.userReservationsContainer}>
-            <h2 className={styles.userReservationsHeader}>All User Reservations</h2>
+            <h2 className={styles.userReservationsHeader}>Reservations Per User </h2>
             {Object.keys(userReservations).length > 0 ? (
                 Object.entries(userReservations).map(([username, reservations]) => (
                     <div key={username}>
