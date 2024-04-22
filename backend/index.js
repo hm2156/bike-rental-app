@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+
 
 const mongoose = require('mongoose');
 app.use(bodyParser.json());
@@ -19,7 +19,7 @@ app.use(session({
   secret: secretKey,
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // Set to false if you are not using HTTPS
+  cookie: { secure: false } 
 }));
 
 mongoose.connect('mongodb://localhost:27017/bike-rental')
@@ -52,7 +52,7 @@ mongoose.connect('mongodb://localhost:27017/bike-rental')
     password: String,
     role: { type: String, default: 'user' }
   });
-  
+
   const Bike = model('Bike', bikeSchema);
   const Reservation = model('Reservation', reservationSchema);
   const User = model('User', userSchema);
@@ -88,26 +88,25 @@ app.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Username and password are required' });
     }
 
-    // Find the user by username
     const user = await User.findOne({ username });
 
-    // Check if user exists
+
     if (!user) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    // Compare passwords (assuming passwords are stored securely, such as hashed)
+   
     if (user.password !== password) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    // Store user information in session
+   
     req.session.user = user;
 
-    // Respond with user role
+   
     res.json({ message: 'User authenticated successfully',username: user.username, role: user.role });
   } catch (error) {
-    // Handle any errors
+    
     console.error('Login failed:', error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
@@ -136,26 +135,25 @@ app.get('/bikes', async (req, res) => {
     }
 });
 
+//fetch available time slots
 app.get('/availableSlots', async (req, res) => {
     const { bikeId, date } = req.query;
 
     try {
-        // Fetch all reservations for the specific bike and date
+
         const reservations = await Reservation.find({
             bike: bikeId,
             date: date
         }).select('timeSlot');
 
-        // Get all reserved time slots as an array
         const reservedTimeSlots = reservations.map(res => res.timeSlot);
 
-        // Fetch the bike to get its available time slots
         const bike = await Bike.findById(bikeId);
         if (!bike) {
             return res.status(404).json({ message: "Bike not found" });
         }
 
-        // Filter out the time slots that are not reserved
+   
         const availableSlots = bike.timeSlots.filter(slot => !reservedTimeSlots.includes(slot));
 
         res.json({ slots: availableSlots });
@@ -166,7 +164,7 @@ app.get('/availableSlots', async (req, res) => {
 });
 
 
-
+//reserve a bike
 app.post('/reserve', async (req, res) => {
     const { bikeId, date, timeSlot, username } = req.body;
 
@@ -203,24 +201,24 @@ app.post('/reserve', async (req, res) => {
 
 
 
-
+//cancel reser
 app.post('/cancel', async (req, res) => {
     const { reservationId, username } = req.body;
 
     try {
-        // First, find the user by username to get the user's ID
+
         const user = await User.findOne({ username });
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        // Ensure the reservation belongs to the user attempting to cancel it
+   
         const reservation = await Reservation.findOne({ _id: reservationId, user: user._id });
         if (!reservation) {
             return res.status(404).json({ message: 'Reservation not found or does not belong to this user' });
         }
 
-        // If the reservation is found and belongs to the user, delete it
+        
         await Reservation.deleteOne({ _id: reservationId });
         res.json({ message: 'Reservation cancelled successfully' });
     } catch (error) {
@@ -231,6 +229,7 @@ app.post('/cancel', async (req, res) => {
 
 
 
+//rating a bike
 app.post('/rate', async (req, res) => {
  
     const { bikeId, rating, username } = req.body;
@@ -249,15 +248,14 @@ app.post('/rate', async (req, res) => {
         return res.status(404).json({ message: 'Bike not found' });
       }
   
-      // Check if the user has already rated the bike
+      
       const existingRating = bike.ratings.find(r => r.user.equals(user._id));
     
       if (existingRating) {
         return res.status(409).json({ message: 'You have already rated this bike' });
       }
   
-   
-      // Add new rating
+
       bike.ratings.push({ user: user._id, rating });
       bike.averageRating = bike.ratings.reduce((acc, curr) => acc + curr.rating, 0) / bike.ratings.length;
       await bike.save();
@@ -271,7 +269,7 @@ app.post('/rate', async (req, res) => {
   
   app.get('/users', async (req, res) => {
     try {
-      const users = await User.find({}, 'username role -_id').exec(); // Excluding password and __v from the result
+      const users = await User.find({}, 'username role -_id').exec(); 
       res.json(users);
     } catch (error) {
       console.error('Failed to fetch users:', error);
@@ -280,13 +278,13 @@ app.post('/rate', async (req, res) => {
   });
 
 
-  // PUT endpoint for updating a bike by ID
+  // updating/editing a bike by ID
     app.put('/bikes/:id', async (req, res) => {
         try {
-        const { id } = req.params; // Get the bike ID from the URL
-        const updateData = req.body; // Get the updated bike data from the request body
+        const { id } = req.params; 
+        const updateData = req.body; 
     
-        // Update the bike by ID with the new data
+        
         const updatedBike = await Bike.findByIdAndUpdate(id, updateData, { new: true });
         if (!updatedBike) {
             return res.status(404).json({ message: 'Bike not found' });
@@ -299,17 +297,18 @@ app.post('/rate', async (req, res) => {
         }
     });
   
+    //updating/editing user
     app.put('/users/:username', async (req, res) => {
-        console.log("Received update request for username:", req.params.username);  // Log the username received in the request
+        console.log("Received update request for username:", req.params.username);  
         console.log("Update data:", req.body);
-        const { username } = req.params;  // Extract username from URL
-        const updateData = req.body;  // Data sent in request to update the user
+        const { username } = req.params;  
+        const updateData = req.body; 
     
         try {
             const updatedUser = await User.findOneAndUpdate(
-                { username: username },  // Find user by username
-                updateData,  // Update fields sent in request
-                { new: true , runValidators: true}  // Return new document and run schema validators
+                { username: username },  
+                updateData,  
+                { new: true , runValidators: true}  
             );
     
             if (!updatedUser) {
@@ -326,6 +325,7 @@ app.post('/rate', async (req, res) => {
     
       
 
+    //deleting bike
     app.delete('/bikes/:id', async (req, res) => {
         try {
             const { id } = req.params;
@@ -343,6 +343,7 @@ app.post('/rate', async (req, res) => {
         }
       });
 
+      //deleting user
       app.delete('/users/:username', async (req, res) => {
         const { username } = req.params;
     
@@ -360,6 +361,7 @@ app.post('/rate', async (req, res) => {
     
       
 
+    //adding a new bike
       app.post('/bikes', async (req, res) => {
         const { model, color, location, available, imageUrl, availability, timeSlots } = req.body;
         try {
@@ -374,24 +376,24 @@ app.post('/rate', async (req, res) => {
             });
     
             await newBike.save();
-            res.status(201).json(newBike); // Send back the newly created bike with 201 Created status
+            res.status(201).json(newBike); 
         } catch (error) {
             console.error('Failed to add new bike:', error);
-            res.status(500).json({ message: 'Internal server error', error }); // Provide error message and details
+            res.status(500).json({ message: 'Internal server error', error }); 
         }
     });
 
 
+    //adding new users
     app.post('/users', async (req, res) => {
         const { username, password, role } = req.body;
     
         try {
-            // Ensure the role is correctly set to 'user' or 'admin'
+           
             if (!['user', 'admin'].includes(role)) {
                 return res.status(400).json({ message: 'Invalid user role' });
             }
     
-            // Check if username already exists to avoid duplicates
             const existingUser = await User.findOne({ username });
             if (existingUser) {
                 return res.status(409).json({ message: 'Username already exists' });
@@ -399,7 +401,7 @@ app.post('/rate', async (req, res) => {
     
             const newUser = new User({
                 username,
-                password,  // Storing the password directly, not recommended for production
+                password,  
                 role
             });
     
@@ -414,29 +416,23 @@ app.post('/rate', async (req, res) => {
 
 
 
-
-
-
-
-
-
-
+//getting user's reservations
 app.get('/userReservations', async (req, res) => {
     const { username } = req.query;
 
     try {
-        // First, find the user by username to get the user's ID
+
         const user = await User.findOne({ username });
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        // Use the user's ID to find all reservations associated with the user
+        
         const reservations = await Reservation.find({ user: user._id })
-            .populate('bike', 'model imageUrl') // Only populate 'model' and 'imageUrl' from the 'Bike' collection
+            .populate('bike', 'model imageUrl') 
             .exec();
         console.log("reservations: ", reservations)
-        // Format the reservations data for the response
+
         const formattedReservations = reservations.map(res => ({
             _id: res._id,
             bike: {
@@ -455,14 +451,15 @@ app.get('/userReservations', async (req, res) => {
     }
 });
 
+//getting all user's reservations
 app.get('/allUserReservations', async (req, res) => {
     try {
         const reservations = await Reservation.find({})
-            .populate('bike', 'model imageUrl')  // Populate bike details
-            .populate('user', 'username')  // Populate user details
+            .populate('bike', 'model imageUrl')  
+            .populate('user', 'username')  
             .exec();
 
-        // Group reservations by user
+
         const userReservations = reservations.reduce((acc, res) => {
             acc[res.user.username] = acc[res.user.username] || [];
             acc[res.user.username].push({
@@ -491,7 +488,7 @@ app.get('/bikesWithReservations', async (req, res) => {
             .populate('user', 'username')
             .exec();
 
-        // Transform the data to be grouped by bike
+
         const reservationsByBike = reservations.reduce((acc, reservation) => {
             const bikeId = reservation.bike._id.toString();
             if (!acc[bikeId]) {
@@ -515,73 +512,6 @@ app.get('/bikesWithReservations', async (req, res) => {
     }
 });
 
-// app.get('/userReservations', async (req, res) => {
-//     const { username } = req.query;
-
-//     try {
-//         const reservations = await Reservation.find({ username }).populate('bike');
-//         res.json(reservations.map(res => ({
-//             _id: res._id,
-//             bike: {
-//                 _id: res.bike._id,
-//                 model: res.bike.model,
-//                 imageUrl: res.bike.imageUrl
-//             },
-//             date: res.date,
-//             timeSlot: res.timeSlot
-//         })));
-//     } catch (error) {
-//         console.error('Failed to fetch reservations for user:', username, error);
-//         res.status(500).json({ message: 'Internal server error' });
-//     }
-// });
-
-
-// app.post('/reserve', async (req, res) => {
-//     const { bikeId, date, timeSlot, username } = req.body;
-
-//     try {
-//         // Ensure the user exists
-//         const user = await User.findOne({ username });
-//         if (!user) {
-//             return res.status(404).json({ message: 'User not found.' });
-//         }
-
-//         // Check if the reservation already exists for the given slot
-//         const existingReservation = await Reservation.findOne({
-//             bike: bikeId,
-//             date: date,
-//             timeSlot: timeSlot
-//         });
-
-//         if (existingReservation) {
-//             return res.status(409).json({ message: 'This time slot is already booked.' });
-//         }
-
-//         // Create a new reservation using username directly
-//         const reservation = new Reservation({
-//             bike: bikeId,
-//             user: user._id,  // Linking the reservation to the user's ObjectId for reference integrity
-//             date: date,
-//             timeSlot: timeSlot
-//         });
-
-//         await reservation.save();
-//         res.status(201).json({
-//             message: 'Bike reserved successfully',
-//             reservation: {
-//                 _id: reservation._id,
-//                 bikeId: reservation.bike,
-//                 username: user.username,  // Including username in the response for clarity
-//                 date: reservation.date,
-//                 timeSlot: reservation.timeSlot
-//             }
-//         });
-//     } catch (error) {
-//         console.error('Error reserving the bike:', error);
-//         res.status(500).json({ message: 'Internal server error' });
-//     }
-// });
 
 
 const PORT = 3001;
