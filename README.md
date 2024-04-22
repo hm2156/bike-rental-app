@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Bike Rental Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This React-based application is designed to manage bike rentals, featuring user roles for Managers and Users. Managers can manage bike and user data, while Users can reserve bikes, view bike availability, and rate them. This project utilizes the MERN stack (MongoDB, Express.js, React, and Node.js) for a full-stack JavaScript solution.
 
-## Available Scripts
+## Technology Stack
 
-In the project directory, you can run:
+- **Frontend**: React (bootstrapped with Create React App)
+- **Backend**: Node.js with Express.js
+- **Database**: MongoDB
+- **State Management**: React Context for state management across components
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Ensure you have Node.js and npm (Node Package Manager) installed on your system. You can download and install them from [https://nodejs.org/](https://nodejs.org/).
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Clone the repository to your local machine:
 
-### `npm run build`
+```bash
+git clone https://github.com/yourusername/bike-rental-app.git
+cd bike-rental-app
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Backend Setup for Bike Rental Application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Initial Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Before running the backend server for the first time, you must set up your MongoDB database with initial data. This project uses a seed script to populate the database with bike data.
 
-### `npm run eject`
+### Seeding the Database
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Navigate to the backend directory:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   cd backend
+   ``
+Run the seed script to populate your MongoDB database with initial bike data. This step is crucial as it sets up the necessary data structures and populates them with default values, ensuring that the application functions correctly from the start.
+```bash
+node seed.js
+```
+Note: This script needs to be run only once before you start your server for the first time or whenever you want to reset your database to its initial state.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Starting the Backend Server
+After seeding the database, you can start the backend server:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Still within the backend directory, run the following command to start the server:
+```bash
+node index.js
+```
+This command launches the Node.js server using Express, which listens for API requests and interacts with the MongoDB database.
 
-## Learn More
+### Running the Frontend
+Open another terminal window to start the frontend application. Ensure you are in the project's root directory, then run the following command:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm start
+```
