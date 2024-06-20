@@ -24,7 +24,7 @@ app.use(session({
 }));
 
 
-mongoose.connect('mongodb://localhost:27017/bike-rental')
+mongoose.connect('mongodb+srv://dbuser:dbuserdbuser@cluster0.j6wiowh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 .then(() => {
     console.log('MongoDB connected'); })
 .catch(err => console.log('Failed to connect to MongoDB', err));

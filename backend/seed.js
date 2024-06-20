@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 
-mongoose.connect('mongodb://localhost:27017/bike-rental', {
+mongoose.connect('mongodb+srv://dbuser:dbuserdbuser@cluster0.j6wiowh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
